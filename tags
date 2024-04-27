@@ -58,34 +58,71 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	6.1.0	//
 0	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	o	array:local
-15729799797837862367	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	o	object:outputs
-4614504638168534921	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	o	object:outputs
+0	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	o	array:local
+0	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	o	array:local
+15729799797837862367	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o	object:outputs
+4614504638168534921	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o	object:outputs
 CheckDepInfo	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	o	object:local.0
-code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	n	object:outputs.15729799797837862367
-code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	n	object:outputs.4614504638168534921
+CheckDepInfo	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	o	object:local.0
+CheckDepInfo	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	o	object:local.0
+I	src/main.rs	/^    I = 1,$/;"	e	enum:Tag
+Label	src/main.rs	/^    Label = 1,$/;"	e	enum:OpCode
+OpCode	src/main.rs	/^enum OpCode {$/;"	g
+Tag	src/main.rs	/^enum Tag {$/;"	g
+atom_chunk	src/main.rs	/^fn atom_chunk(atoms: &[&str]) -> Vec<u8> {$/;"	f
+code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n	object:outputs.15729799797837862367
+code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n	object:outputs.4614504638168534921
 code_chunk	src/main.rs	/^fn code_chunk() -> Vec<u8> {$/;"	f
 compile_kind	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
+compile_kind	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+compile_kind	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
 config	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
+config	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+config	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
 dep_info	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	s	object:local.0.CheckDepInfo
+dep_info	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	s	object:local.0.CheckDepInfo
+dep_info	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	s	object:local.0.CheckDepInfo
 deps	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	a
+deps	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	a
+deps	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	a
+encode	src/main.rs	/^fn encode(tag: Tag, n: i32) -> Vec<u8> {$/;"	f
+exports_chunk	src/main.rs	/^fn exports_chunk() -> Vec<u8> {$/;"	f
 features	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	s
+features	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	s
+features	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	s
+imports_chunk	src/main.rs	/^fn imports_chunk() -> Vec<u8> {$/;"	f
 local	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	a
+local	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	a
+local	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	a
 main	src/main.rs	/^fn main() {$/;"	f
 metadata	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
-outputs	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	o
+metadata	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+metadata	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
+outputs	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o
 pad_chunk	src/main.rs	/^fn pad_chunk(chunk: &mut Vec<u8>) {$/;"	f
 path	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
+path	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+path	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
 profile	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
+profile	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+profile	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
 rustc	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
-rustc_fingerprint	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	n
+rustc	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+rustc	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
+rustc_fingerprint	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n
 rustflags	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	a
-status	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	s	object:outputs.15729799797837862367
-status	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	s	object:outputs.4614504638168534921
-stderr	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	s	object:outputs.15729799797837862367
-stderr	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	s	object:outputs.4614504638168534921
-stdout	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	s	object:outputs.15729799797837862367
-stdout	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	s	object:outputs.4614504638168534921
-success	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	b	object:outputs.15729799797837862367
-success	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	b	object:outputs.4614504638168534921
-successes	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"4614504638168534921":{"success":true,"stat/;"	o
+rustflags	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	a
+rustflags	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	a
+status	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	s	object:outputs.15729799797837862367
+status	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	s	object:outputs.4614504638168534921
+stderr	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	s	object:outputs.15729799797837862367
+stderr	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	s	object:outputs.4614504638168534921
+stdout	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	s	object:outputs.15729799797837862367
+stdout	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	s	object:outputs.4614504638168534921
+string_chunk	src/main.rs	/^fn string_chunk() -> Vec<u8> {$/;"	f
+success	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	b	object:outputs.15729799797837862367
+success	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	b	object:outputs.4614504638168534921
+successes	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o
 target	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
+target	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
+target	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
