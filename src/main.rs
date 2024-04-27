@@ -6,15 +6,15 @@ enum OpCode {
     FuncInfo = 2,
     IntCodeEnd = 3,
     Return = 19,
-    // Move = 64,
+    Move = 64,
 }
 
 #[repr(u8)]
 enum Tag {
     U = 0,
-    // I = 1,
+    I = 1,
     A = 2,
-    // X = 3,
+    X = 3,
 }
 
 fn encode(tag: Tag, n: i32) -> Vec<u8> {
@@ -56,7 +56,7 @@ fn pad_chunk(chunk: &mut Vec<u8>) {
 fn code_chunk() -> Vec<u8> {
     let sub_size: u32 = 16;
     let instruction_set: u32 = 0;
-    let opcode_max: u32 = 0;
+    let opcode_max: u32 = 169;
     let label_count: u32 = 3;
     let function_count: u32 = 1;
 
@@ -78,6 +78,10 @@ fn code_chunk() -> Vec<u8> {
 
     chunk.push(OpCode::Label as u8);
     chunk.extend(encode(Tag::U, 2));
+
+    chunk.push(OpCode::Move as u8);
+    chunk.extend(encode(Tag::I, 6));
+    chunk.extend(encode(Tag::X, 0));
 
     chunk.push(OpCode::Return as u8);
 
@@ -167,8 +171,17 @@ fn imports_chunk() -> Vec<u8> {
 fn exports_chunk() -> Vec<u8> {
     let mut chunk = Vec::new();
 
-    let export_count: u32 = 0;
+    let export_count: u32 = 1;
     chunk.extend(export_count.to_be_bytes());
+
+    // NOTE: Atom
+    chunk.extend(1u32.to_be_bytes());
+
+    // NOTE: Arity
+    chunk.extend(0u32.to_be_bytes());
+
+    // NOTE: Label
+    chunk.extend(2u32.to_be_bytes());
 
     let mut result = Vec::new();
     result.extend("ExpT".as_bytes());
