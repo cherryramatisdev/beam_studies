@@ -3,17 +3,17 @@ use std::fs;
 #[repr(u8)]
 enum OpCode {
     Label = 1,
-    // FuncInfo = 2,
-    // IntCodeEnd = 3,
-    // Return = 19,
+    FuncInfo = 2,
+    IntCodeEnd = 3,
+    Return = 19,
     // Move = 64,
 }
 
 #[repr(u8)]
 enum Tag {
-    // U = 0,
-    I = 1,
-    // A = 2,
+    U = 0,
+    // I = 1,
+    A = 2,
     // X = 3,
 }
 
@@ -57,8 +57,8 @@ fn code_chunk() -> Vec<u8> {
     let sub_size: u32 = 16;
     let instruction_set: u32 = 0;
     let opcode_max: u32 = 0;
-    let label_count: u32 = 0;
-    let function_count: u32 = 0;
+    let label_count: u32 = 3;
+    let function_count: u32 = 1;
 
     let mut chunk: Vec<u8> = Vec::new();
 
@@ -69,7 +69,19 @@ fn code_chunk() -> Vec<u8> {
     chunk.extend(function_count.to_be_bytes());
 
     chunk.push(OpCode::Label as u8);
-    chunk.extend(encode(Tag::I, 1));
+    chunk.extend(encode(Tag::U, 1));
+
+    chunk.push(OpCode::FuncInfo as u8);
+    chunk.extend(encode(Tag::A, 1));
+    chunk.extend(encode(Tag::A, 1));
+    chunk.extend(encode(Tag::U, 0));
+
+    chunk.push(OpCode::Label as u8);
+    chunk.extend(encode(Tag::U, 2));
+
+    chunk.push(OpCode::Return as u8);
+
+    chunk.push(OpCode::IntCodeEnd as u8);
 
     let mut result = Vec::new();
     result.extend("Code".as_bytes());

@@ -62,13 +62,17 @@
 0	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	o	array:local
 15729799797837862367	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o	object:outputs
 4614504638168534921	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o	object:outputs
+A	src/main.rs	/^    A = 2,$/;"	e	enum:Tag
 CheckDepInfo	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	o	object:local.0
 CheckDepInfo	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	o	object:local.0
 CheckDepInfo	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	o	object:local.0
-I	src/main.rs	/^    I = 1,$/;"	e	enum:Tag
+FuncInfo	src/main.rs	/^    FuncInfo = 2,$/;"	e	enum:OpCode
+IntCodeEnd	src/main.rs	/^    IntCodeEnd = 3,$/;"	e	enum:OpCode
 Label	src/main.rs	/^    Label = 1,$/;"	e	enum:OpCode
 OpCode	src/main.rs	/^enum OpCode {$/;"	g
+Return	src/main.rs	/^    Return = 19,$/;"	e	enum:OpCode
 Tag	src/main.rs	/^enum Tag {$/;"	g
+U	src/main.rs	/^    U = 0,$/;"	e	enum:Tag
 atom_chunk	src/main.rs	/^fn atom_chunk(atoms: &[&str]) -> Vec<u8> {$/;"	f
 code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n	object:outputs.15729799797837862367
 code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n	object:outputs.4614504638168534921
