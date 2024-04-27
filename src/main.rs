@@ -28,6 +28,13 @@ fn encode(tag: Tag, n: i32) -> Vec<u8> {
             // | Is a bitwise or, it combines both bits.
             vec![(n << 4) | tag]
         }
+        n if n < 0x800 => {
+            let tag = tag as u32;
+            let n = n as u32;
+            let a = (((n >> 3) & 0b11100000u32) | tag | 0b00001000u32) as u8;
+            let b = (n & 0xFF) as u8;
+            vec![a, b]
+        }
         _ => todo!("large numbers"),
     }
 }
@@ -80,7 +87,7 @@ fn code_chunk() -> Vec<u8> {
     chunk.extend(encode(Tag::U, 2));
 
     chunk.push(OpCode::Move as u8);
-    chunk.extend(encode(Tag::I, 6));
+    chunk.extend(encode(Tag::I, 69));
     chunk.extend(encode(Tag::X, 0));
 
     chunk.push(OpCode::Return as u8);
