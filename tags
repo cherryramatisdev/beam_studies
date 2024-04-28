@@ -63,6 +63,8 @@
 15729799797837862367	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o	object:outputs
 4614504638168534921	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o	object:outputs
 A	src/main.rs	/^    A = 2,$/;"	e	enum:Tag
+Atoms	src/main.rs	/^impl Atoms {$/;"	c
+Atoms	src/main.rs	/^struct Atoms {$/;"	s
 CheckDepInfo	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	o	object:local.0
 CheckDepInfo	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	o	object:local.0
 CheckDepInfo	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	o	object:local.0
@@ -70,16 +72,19 @@ FuncInfo	src/main.rs	/^    FuncInfo = 2,$/;"	e	enum:OpCode
 I	src/main.rs	/^    I = 1,$/;"	e	enum:Tag
 IntCodeEnd	src/main.rs	/^    IntCodeEnd = 3,$/;"	e	enum:OpCode
 Label	src/main.rs	/^    Label = 1,$/;"	e	enum:OpCode
+Labels	src/main.rs	/^type Labels = HashMap<usize, u32>;$/;"	t
+MODULE_NAME	src/main.rs	/^const MODULE_NAME: &str = "cherry";$/;"	C
 Move	src/main.rs	/^    Move = 64,$/;"	e	enum:OpCode
 OpCode	src/main.rs	/^enum OpCode {$/;"	g
+Program	src/main.rs	/^type Program<'a> = HashMap<&'a str, usize>;$/;"	t
 Return	src/main.rs	/^    Return = 19,$/;"	e	enum:OpCode
 Tag	src/main.rs	/^enum Tag {$/;"	g
 U	src/main.rs	/^    U = 0,$/;"	e	enum:Tag
 X	src/main.rs	/^    X = 3,$/;"	e	enum:Tag
-atom_chunk	src/main.rs	/^fn atom_chunk(atoms: &[&str]) -> Vec<u8> {$/;"	f
+atom_chunk	src/main.rs	/^fn atom_chunk(atoms: &Atoms) -> Vec<u8> {$/;"	f
 code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n	object:outputs.15729799797837862367
 code	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	n	object:outputs.4614504638168534921
-code_chunk	src/main.rs	/^fn code_chunk() -> Vec<u8> {$/;"	f
+code_chunk	src/main.rs	/^fn code_chunk(program: &Program, atoms: &mut Atoms, labels: &mut Labels) -> Vec<u8> {$/;"	f
 compile_kind	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
 compile_kind	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
 compile_kind	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
@@ -93,10 +98,11 @@ deps	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.js
 deps	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	a
 deps	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	a
 encode	src/main.rs	/^fn encode(tag: Tag, n: i32) -> Vec<u8> {$/;"	f
-exports_chunk	src/main.rs	/^fn exports_chunk() -> Vec<u8> {$/;"	f
+exports_chunk	src/main.rs	/^fn exports_chunk(labels: &Labels) -> Vec<u8> {$/;"	f
 features	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	s
 features	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	s
 features	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	s
+get_id	src/main.rs	/^    fn get_id(&mut self, needle: &str) -> usize {$/;"	P	implementation:Atoms
 imports_chunk	src/main.rs	/^fn imports_chunk() -> Vec<u8> {$/;"	f
 local	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	a
 local	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	a
@@ -105,6 +111,7 @@ main	src/main.rs	/^fn main() {$/;"	f
 metadata	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
 metadata	target/debug/.fingerprint/beam_studies-74848bc5d803b2a1/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1440067014/;"	n
 metadata	target/debug/.fingerprint/beam_studies-b13dd17a77e1fbe6/test-bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1395732290/;"	n
+names	src/main.rs	/^    names: Vec<String>,$/;"	m	struct:Atoms
 outputs	target/.rustc_info.json	/^{"rustc_fingerprint":10801112298689820181,"outputs":{"15729799797837862367":{"success":true,"sta/;"	o
 pad_chunk	src/main.rs	/^fn pad_chunk(chunk: &mut Vec<u8>) {$/;"	f
 path	target/debug/.fingerprint/beam_studies-420018c3c5961080/bin-beam_studies.json	/^{"rustc":12152928357286724068,"features":"[]","target":15099308646927342786,"profile":1445353090/;"	n
