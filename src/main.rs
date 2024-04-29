@@ -2,7 +2,12 @@ use std::{collections::HashMap, fs};
 
 const MODULE_NAME: &str = "cherry";
 
-type Program<'a> = HashMap<&'a str, usize>;
+enum Result {
+    Int(usize),
+    Literal(String),
+}
+
+type Program<'a> = HashMap<&'a str, Result>;
 type Labels = HashMap<usize, u32>;
 
 #[repr(u8)]
@@ -14,12 +19,14 @@ enum OpCode {
     Move = 64,
 }
 
+#[derive(Clone)]
 #[repr(u8)]
 enum Tag {
     U = 0,
     I = 1,
     A = 2,
     X = 3,
+    Z = 7,
 }
 
 fn encode(tag: Tag, n: i32) -> Vec<u8> {
@@ -42,6 +49,35 @@ fn encode(tag: Tag, n: i32) -> Vec<u8> {
         }
         _ => todo!("large numbers"),
     }
+}
+
+// encode1(Tag, Bytes) ->
+//     case iolist_size(Bytes) of
+// 	Num when 2 =< Num, Num =< 8 ->
+// 	    [((Num-2) bsl 5) bor 2#00011000 bor Tag| Bytes];
+// 	Num when 8 < Num ->
+// 	    [2#11111000 bor Tag, encode(?tag_u, Num-9)| Bytes]
+//     end.
+fn encode1(tag: Tag, bytes: &[u8]) -> Vec<u8> {
+    let mut result = Vec::new();
+
+    result.extend_from_slice(bytes);
+
+    return result;
+    // let num = bytes.len() as u8;
+    // let t = tag.clone() as u8;
+    // if num >= 2 && num <= 8 {
+    //     let mut result = Vec::new();
+    //     result.push(((num - 2) << 5) | 0b00011000 | t);
+    //     result.extend_from_slice(bytes);
+    //     result
+    // } else {
+    //     let mut result = Vec::new();
+    //     result.push(0b11111000 | t);
+    //     result.extend_from_slice(&encode(tag, (num - 9) as i32));
+    //     result.extend_from_slice(bytes);
+    //     result
+    // }
 }
 
 fn pad_chunk(chunk: &mut Vec<u8>) {
@@ -97,9 +133,13 @@ fn code_chunk(program: &Program, atoms: &mut Atoms, labels: &mut Labels) -> Vec<
         code.extend(encode(Tag::U, label_count as i32));
 
         labels.insert(name_id, label_count);
-
         code.push(OpCode::Move as u8);
-        code.extend(encode(Tag::I, (*result) as i32));
+
+        match result {
+            Result::Int(i) => code.extend(encode(Tag::I, (*i) as i32)),
+            Result::Literal(s) => code.extend(s.as_bytes()),
+        };
+
         code.extend(encode(Tag::X, 0));
 
         code.push(OpCode::Return as u8);
@@ -270,10 +310,10 @@ impl Atoms {
 }
 
 fn main() {
-    let mut program: HashMap<&str, usize> = HashMap::new();
-    program.insert("hello", 69);
-    program.insert("world", 420);
-    program.insert("foo", 100);
+    let mut program: Program = HashMap::new();
+    program.insert("hello", Result::Literal("Hello World".to_string()));
+    program.insert("world", Result::Int(420));
+    // program.insert("foo", Result::Int(100));
 
     let mut atoms = Atoms::default();
     let mut labels: Labels = HashMap::new();
