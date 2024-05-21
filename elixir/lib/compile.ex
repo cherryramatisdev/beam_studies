@@ -1,66 +1,59 @@
 defmodule BeamCherry.Compile do
   @spec call(ast :: list(BeamCherry.Tokenizer.t())) :: {:ok} | {:err}
   def call(_ast) do
-    beam =
-      [to_charlist("BEAM")]
-      |> Enum.concat(code_chunk())
-
-    padded_beam = pad_chunk(beam)
+    beam_content = ["BEAM"] ++ code_chunk() ++ atom_chunk(["output", "hello", "world"])
 
     bytes =
-      [to_charlist("FOR1")]
-      |> Enum.concat([<<ceil((length(padded_beam) + 3) / 4)::size(32)>> | padded_beam])
+      ["FOR1", <<arr_byte_length(beam_content)::size(32)-big-integer>>] ++
+        beam_content
 
     File.write(
       "output.beam",
-      bytes |> IO.iodata_to_binary()
+      bytes |> Enum.join()
     )
 
     {:ok}
   end
 
-  @spec atom_chunk(atoms :: list()) :: list()
-  def atom_chunk(atoms) do
-    formatted_atoms =
-      Enum.flat_map(atoms, fn atom ->
-        [<<to_charlist(atom) |> length()::size(32)>>, to_charlist(atom)]
-      end)
-
-    chunk = [<<length(atoms)::size(32)>>] |> Enum.concat(formatted_atoms)
-
-    [to_charlist("Atom"), <<length(chunk)::size(32)>>] |> Enum.concat(pad_chunk(chunk))
-  end
-
-  @spec code_chunk() :: list()
-  defp code_chunk() do
-    sub_size = 16
+  @spec code_chunk() :: [binary()]
+  def code_chunk() do
     instruction_set = 0
+    sub_size = 16
     opcode_max = 169
     label_count = 0
     function_count = 0
 
-    chunk =
-      [
-        <<sub_size::size(32)>>,
-        <<instruction_set::size(32)>>,
-        <<opcode_max::size(32)>>,
-        <<label_count::size(32)>>,
-        <<function_count::size(32)>>
-      ]
+    chunk = [
+      <<sub_size::size(32)-big-integer>>,
+      <<instruction_set::size(32)-big-integer>>,
+      <<opcode_max::size(32)-big-integer>>,
+      <<label_count::size(32)-big-integer>>,
+      <<function_count::size(32)-big-integer>>
+    ]
 
-    result = [to_charlist("Code"), <<length(chunk)::size(32)>>]
-
-    Enum.concat(result, pad_chunk(chunk))
+    ["Code", <<arr_byte_length(chunk)::size(32)-big-integer>>] ++ pad_chunk(chunk)
   end
 
-  @spec pad_chunk(chunk :: list()) :: list()
-  defp pad_chunk(chunk) do
-    chunk_rem = length(chunk) |> rem(4)
+  @spec atom_chunk([String.t()]) :: [binary()]
+  def atom_chunk(atoms) do
+    chunk =
+      [<<length(atoms)::size(32)-big-integer>>] ++
+        Enum.map(atoms, fn atom -> <<byte_size(atom)::size(32)-big-integer>> end) ++ atoms
+
+    ["AtU8", <<arr_byte_length(chunk)::size(32)-big-integer>>] ++ pad_chunk(chunk)
+  end
+
+  def pad_chunk(chunk) do
+    total_bytes = Enum.reduce(chunk, 0, fn x, acc -> acc + byte_size(x) end)
+    chunk_rem = rem(total_bytes, 4)
 
     if chunk_rem != 0 do
-      Enum.concat(chunk, List.duplicate(0, 4 - chunk_rem))
+      chunk ++ [:binary.copy(<<0>>, 4 - chunk_rem)]
     else
       chunk
     end
   end
+
+  @spec arr_byte_length([binary()]) :: integer()
+  defp arr_byte_length(chunks), do: chunks |> Enum.join() |> byte_size()
 end
