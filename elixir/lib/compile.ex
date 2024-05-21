@@ -4,7 +4,7 @@ defmodule BeamCherry.Compile do
     beam_content = ["BEAM"] ++ code_chunk() ++ atom_chunk(["output", "hello", "world"])
 
     bytes =
-      ["FOR1", <<arr_byte_length(beam_content)::size(32)-big-integer>>] ++
+      ["FOR1", arr_byte_length(beam_content) |> to_be_bytes()] ++
         beam_content
 
     File.write(
@@ -24,23 +24,23 @@ defmodule BeamCherry.Compile do
     function_count = 0
 
     chunk = [
-      <<sub_size::size(32)-big-integer>>,
-      <<instruction_set::size(32)-big-integer>>,
-      <<opcode_max::size(32)-big-integer>>,
-      <<label_count::size(32)-big-integer>>,
-      <<function_count::size(32)-big-integer>>
+      to_be_bytes(sub_size),
+      to_be_bytes(instruction_set),
+      to_be_bytes(opcode_max),
+      to_be_bytes(label_count),
+      to_be_bytes(function_count)
     ]
 
-    ["Code", <<arr_byte_length(chunk)::size(32)-big-integer>>] ++ pad_chunk(chunk)
+    ["Code", arr_byte_length(chunk) |> to_be_bytes()] ++ pad_chunk(chunk)
   end
 
   @spec atom_chunk([String.t()]) :: [binary()]
   def atom_chunk(atoms) do
     chunk =
-      [<<length(atoms)::size(32)-big-integer>>] ++
-        Enum.map(atoms, fn atom -> <<byte_size(atom)::size(32)-big-integer>> end) ++ atoms
+      [length(atoms) |> to_be_bytes()] ++
+        Enum.map(atoms, fn atom -> byte_size(atom) |> to_be_bytes() end) ++ atoms
 
-    ["AtU8", <<arr_byte_length(chunk)::size(32)-big-integer>>] ++ pad_chunk(chunk)
+    ["AtU8", arr_byte_length(chunk) |> to_be_bytes()] ++ pad_chunk(chunk)
   end
 
   def pad_chunk(chunk) do
@@ -56,4 +56,7 @@ defmodule BeamCherry.Compile do
 
   @spec arr_byte_length([binary()]) :: integer()
   defp arr_byte_length(chunks), do: chunks |> Enum.join() |> byte_size()
+
+  @spec to_be_bytes(integer()) :: binary()
+  def to_be_bytes(num) when is_integer(num), do: <<num::size(32)-big-integer>>
 end
