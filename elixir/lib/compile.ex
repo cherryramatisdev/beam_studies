@@ -7,7 +7,7 @@ defmodule BeamCherry.Compile do
     f: 5
   }
 
-  @opcodes %{label: 1, func_info: 2, return: 19, int_code_end: 3}
+  @opcodes %{label: 1, func_info: 2, return: 19, int_code_end: 3, move: 64}
 
   import Bitwise
 
@@ -56,6 +56,9 @@ defmodule BeamCherry.Compile do
         encode(@tags[:u], 0) ++
         [<<@opcodes[:label]>>] ++
         encode(@tags[:u], 2) ++
+        [<<@opcodes[:move]>>] ++
+        encode(@tags[:i], 69) ++
+        encode(@tags[:x], 0) ++
         [<<@opcodes[:return]>>] ++
         [<<@opcodes[:int_code_end]>>]
 
@@ -71,11 +74,15 @@ defmodule BeamCherry.Compile do
   end
 
   defp chunk(:export) do
-    export_count = 0
+    export_count = 1
 
-    chunk = [to_be_bytes(export_count)]
+    chunk = [to_be_bytes(export_count), to_be_bytes(1), to_be_bytes(0), to_be_bytes(2)]
 
-    ["ExpT", arr_byte_length(chunk) |> to_be_bytes()] ++ pad_chunk(chunk)
+    [
+      "ExpT",
+      arr_byte_length(chunk) |> to_be_bytes()
+    ] ++
+      pad_chunk(chunk)
   end
 
   defp chunk(:str) do
@@ -112,6 +119,9 @@ defmodule BeamCherry.Compile do
   defp encode(_, n) when n < 0, do: []
 
   defp encode(tag, n) when n < 16, do: [<<n <<< 4 ||| tag>>]
+
+  defp encode(tag, n) when n < 0x800,
+    do: [<<(n >>> 3 &&& 0b11100000) ||| tag ||| 0b00001000>>, <<n &&& 0xFF>>]
 
   # TODO: Large numbers
   defp encode(_, _), do: []
