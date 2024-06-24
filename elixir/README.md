@@ -1,21 +1,42 @@
-# BeamCherry
+# BEAM Studies in Elixir
 
-**TODO: Add description**
+## Getting started
 
-## Installation
+1. Write a sample file, like the one found in `example/`
+2. Run the mix task: `mix beam.compile example/number.be`
+3. Load the module in erlang:
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `beam_cherry` to your list of dependencies in `mix.exs`:
+```
+❯ mix beam.compile example/number.be
+Compiling 1 file (.ex)
+❯ erl
+Erlang/OTP 27 [erts-15.0] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit]
 
-```elixir
-def deps do
-  [
-    {:beam_cherry, "~> 0.1.0"}
-  ]
-end
+Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
+1> code:load_file(output).
+{module,output}
+2>
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/beam_cherry>.
+**Bonus tip**
 
+You can run only the tokenizer:
+
+```
+❯ cat example/number.be
+world = 420
+hello = 777
+❯ mix tokenize example/number.be
+[
+  %{func_name: "world", return_value: 420},
+  %{func_name: "hello", return_value: 777}
+]
+```
+
+## To dos
+
+- [ ] Support defining the functions from the `be` file
+- [ ] Support operations like + - * /
+- [ ] Support strings
+- [ ] Support functions
+- [ ] Make the language turing complete
