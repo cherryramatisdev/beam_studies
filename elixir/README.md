@@ -6,7 +6,7 @@
 2. Run the mix task: `mix beam.compile example/number.be`
 3. Load the module in erlang:
 
-```
+```erlang
 ❯ mix beam.compile example/number.be
 Compiling 1 file (.ex)
 ❯ erl
@@ -22,7 +22,7 @@ Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
 
 You can run only the tokenizer:
 
-```
+```shell
 ❯ cat example/number.be
 world = 420
 hello = 777
