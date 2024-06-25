@@ -73,42 +73,42 @@ fn code_chunk(program: &Program, atoms: &mut Atoms, labels: &mut Labels) -> Vec<
 
     let mut code: Vec<u8> = Vec::new();
 
-    // for (name, result) in program.iter() {
-    //     function_count += 1;
+    for (name, result) in program.iter() {
+        function_count += 1;
 
-    //     label_count += 1;
+        label_count += 1;
 
-    //     code.push(OpCode::Label as u8);
-    //     code.extend(encode(Tag::U, label_count as i32));
+        code.push(OpCode::Label as u8);
+        code.extend(encode(Tag::U, label_count as i32));
 
-    //     code.push(OpCode::FuncInfo as u8);
-    //     code.extend(encode(Tag::A, atoms.get_id(MODULE_NAME) as i32));
+        code.push(OpCode::FuncInfo as u8);
+        code.extend(encode(Tag::A, atoms.get_id(MODULE_NAME) as i32));
 
-    //     let name_id = atoms.get_id(name);
+        let name_id = atoms.get_id(name);
 
-    //     code.extend(encode(Tag::A, name_id as i32));
+        code.extend(encode(Tag::A, name_id as i32));
 
-    //     labels.insert(name_id, label_count);
+        labels.insert(name_id, label_count);
 
-    //     // Arity
-    //     code.extend(encode(Tag::U, 0));
+        // Arity
+        code.extend(encode(Tag::U, 0));
 
-    //     label_count += 1;
+        label_count += 1;
 
-    //     code.push(OpCode::Label as u8);
-    //     code.extend(encode(Tag::U, label_count as i32));
+        code.push(OpCode::Label as u8);
+        code.extend(encode(Tag::U, label_count as i32));
 
-    //     labels.insert(name_id, label_count);
-    //     code.push(OpCode::Move as u8);
+        labels.insert(name_id, label_count);
+        code.push(OpCode::Move as u8);
 
-    //     code.extend(encode(Tag::I, (*result) as i32));
+        code.extend(encode(Tag::I, (*result) as i32));
 
-    //     code.extend(encode(Tag::X, 0));
+        code.extend(encode(Tag::X, 0));
 
-    //     code.push(OpCode::Return as u8);
-    // }
+        code.push(OpCode::Return as u8);
+    }
 
-    // code.push(OpCode::IntCodeEnd as u8);
+    code.push(OpCode::IntCodeEnd as u8);
 
     label_count += 1;
 
@@ -157,7 +157,6 @@ fn atom_chunk(atoms: &Atoms) -> Vec<u8> {
 
     // NOTE: This will only consider assembling in latin1, not utf-8, newer Erlang/OTP compiler
     // doesn't even support non utf-8 anymore.
-    //
     // result.extend("Atom".as_bytes());
 
     result.extend("AtU8".as_bytes());
@@ -286,10 +285,10 @@ fn main() {
     // NOTE: Magic "footer" to interpret as a beam file.
     beam.extend("BEAM".as_bytes());
     beam.extend(code_chunk(&program, &mut atoms, &mut labels));
-    // beam.extend(imports_chunk());
-    // beam.extend(exports_chunk(&labels));
-    // beam.extend(string_chunk());
-    // beam.extend(atom_chunk(&atoms));
+    beam.extend(imports_chunk());
+    beam.extend(exports_chunk(&labels));
+    beam.extend(string_chunk());
+    beam.extend(atom_chunk(&atoms));
 
     let mut bytes: Vec<u8> = Vec::new();
 
