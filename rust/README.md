@@ -2,15 +2,15 @@
 
 ## Usage
 
-1. Checkout the `main` function to include new functions in the hash table in the line 278
+1. Write a sample module file, such as the one found in `examples/foo.be`
 
-```rust
-fn main() {
-    let mut program: Program = HashMap::new();
-    program.insert("world", 420);
+```shell
+❯ cat examples/foo.be
+hello = 400
+world = 420
 ```
 
-2. Run `cargo run`
+2. Run `cargo run examples/foo.be` where `examples/foo.be` is the path for your file of choice.
 3. Load the code in the erlang REPL as the following:
 
 ```erlang
@@ -24,7 +24,3 @@ Eshell V15.0 (press Ctrl+G to abort, type help(). for help)
 420
 3>
 ```
-
-## To-dos
-
-- [ ] Implement a parser for a new language and accept a file as first argument.
